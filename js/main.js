@@ -15,25 +15,65 @@
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
-  /* ============================ LOADER ============================ */
+  /* ============================ LOADER (con progreso) ============================ */
   (function loader() {
     var el = $('#loader');
     if (!el) return;
     document.body.classList.add('is-locked');
-    var MIN = reduceMotion ? 400 : 2600;
-    var start = Date.now();
-    function done() {
-      var wait = Math.max(0, MIN - (Date.now() - start));
+    var bar = $('#loaderBar'), pct = $('#loaderPct');
+    var MIN = reduceMotion ? 500 : 2600, start = Date.now(), loaded = false, finished = false, p = 0;
+    // barra de progreso: avanza hasta 90% mientras carga, completa a 100% al estar listo
+    var prog = setInterval(function () {
+      var cap = loaded ? 100 : 90;
+      p += Math.max(0.6, (cap - p) * 0.07);
+      if (p > cap) p = cap;
+      if (bar) bar.style.width = p.toFixed(1) + '%';
+      if (pct) pct.textContent = Math.round(p) + '%';
+      if (p >= 100) clearInterval(prog);
+    }, 28);
+    function reveal() {
+      if (finished) return; finished = true;
+      clearInterval(prog);
+      if (bar) bar.style.width = '100%';
+      if (pct) pct.textContent = '100%';
       setTimeout(function () {
         el.classList.add('is-done');
         document.body.classList.remove('is-locked');
         setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 1100);
-      }, wait);
+      }, 360);
     }
-    if (document.readyState === 'complete') done();
-    else window.addEventListener('load', done);
-    // Failsafe
-    setTimeout(done, 5000);
+    function onReady() {
+      loaded = true;
+      setTimeout(reveal, Math.max(0, MIN - (Date.now() - start)));
+    }
+    if (document.readyState === 'complete') onReady();
+    else window.addEventListener('load', onReady);
+    setTimeout(function () { loaded = true; reveal(); }, 6000); // failsafe
+  })();
+
+  /* ============================ HERO · INCLINACIÓN 3D ============================ */
+  (function heroTilt() {
+    if (reduceMotion) return;
+    var tilt = $('#heroTilt');
+    if (!tilt) return;
+    if (window.matchMedia('(hover: none)').matches) return; // saltar en pantallas táctiles
+    var hero = tilt.closest('.hero');
+    var tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+    function loop() {
+      cx += (tx - cx) * 0.08; cy += (ty - cy) * 0.08;
+      tilt.style.transform = 'rotateY(' + (cx * 9).toFixed(2) + 'deg) rotateX(' + (-cy * 7).toFixed(2) + 'deg)';
+      if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) raf = requestAnimationFrame(loop);
+      else raf = null;
+    }
+    hero.addEventListener('mousemove', function (e) {
+      var r = hero.getBoundingClientRect();
+      tx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+      ty = ((e.clientY - r.top) / r.height - 0.5) * 2;
+      if (!raf) raf = requestAnimationFrame(loop);
+    });
+    hero.addEventListener('mouseleave', function () {
+      tx = 0; ty = 0; if (!raf) raf = requestAnimationFrame(loop);
+    });
   })();
 
   /* ============================ WHATSAPP LINKS ============================ */

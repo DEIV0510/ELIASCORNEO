@@ -22,7 +22,7 @@ createServer(async (req, res) => {
     const s = await stat(fp).catch(() => null);
     if (!s || !s.isFile()) { res.writeHead(404, { 'Content-Type': 'text/plain' }); return res.end('404'); }
     const data = await readFile(fp);
-    res.writeHead(200, { 'Content-Type': MIME[extname(fp).toLowerCase()] || 'application/octet-stream', 'Cache-Control': 'no-cache' });
+    res.writeHead(200, { 'Content-Type': MIME[extname(fp).toLowerCase()] || 'application/octet-stream', 'Cache-Control': 'no-store, no-cache, must-revalidate' });
     res.end(data);
   } catch (e) {
     res.writeHead(500); res.end('500: ' + e.message);

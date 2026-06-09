@@ -82,9 +82,12 @@
         <img class="loader__logo" src="assets/logo/vertical-cream-880.png" alt="Elías Coneo" width="280" height="280" />
         <span class="loader__shimmer" aria-hidden="true"></span>
       </div>
-      <img class="loader__reflection" src="assets/logo/vertical-cream-880.png" alt="" aria-hidden="true" width="280" height="280" />
+      <p class="loader__caption">Después del Agua</p>
+      <div class="loader__progress" aria-hidden="true">
+        <span class="loader__bar"><span class="loader__bar-fill" id="loaderBar"></span></span>
+        <span class="loader__pct" id="loaderPct">0%</span>
+      </div>
     </div>
-    <p class="loader__caption">Después del Agua</p>
   </div>
 
   <!-- ============================ HEADER / NAV ============================ -->
@@ -134,22 +137,44 @@
 
     <!-- ============================ HERO ============================ -->
     <section class="hero" id="inicio">
-      <div class="hero__media" aria-hidden="true">
-        <!-- Foto real del estudio (extraída del PDF de marca). Reemplazable por una toma en mayor resolución en: assets/img/hero.jpg -->
-        <picture>
-          <source type="image/webp" srcset="assets/img/interior-real-1224.webp" />
-          <img src="assets/img/interior-real-1224.jpg" alt="" width="1224" height="596" fetchpriority="high" onerror="this.onerror=null;this.src='assets/img/interior-real-1224.jpg';" />
-        </picture>
-        <span class="hero__overlay"></span>
+      <!-- Fondo premium con profundidad: gradiente + spotlight + piso 3D + orbes -->
+      <div class="hero__bg" aria-hidden="true">
+        <span class="hero__gradient"></span>
+        <span class="hero__glow"></span>
+        <span class="hero__floor"></span>
+        <span class="hero__orb hero__orb--a"></span>
+        <span class="hero__orb hero__orb--b"></span>
+        <span class="hero__orb hero__orb--c"></span>
       </div>
 
-      <div class="hero__content">
-        <p class="eyebrow eyebrow--light reveal">Diseño Interior &amp; Experiencias · Colombia</p>
-        <h1 class="hero__title reveal">Diseñamos espacios que se convierten en <em>experiencias</em> memorables.</h1>
-        <p class="hero__subtitle reveal">Creamos interiores residenciales y comerciales donde el diseño, la emoción y la funcionalidad se encuentran para transformar la forma en que vives cada espacio.</p>
-        <div class="hero__actions reveal">
-          <a href="#contacto" class="btn btn--solid">Agendar asesoría</a>
-          <a href="#portafolio" class="btn btn--ghost">Ver proyectos</a>
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow eyebrow--light reveal">Diseño Interior &amp; Experiencias · Colombia</p>
+          <h1 class="hero__title reveal">Diseñamos espacios que se convierten en <em>experiencias</em> memorables.</h1>
+          <p class="hero__subtitle reveal">Creamos interiores residenciales y comerciales donde el diseño, la emoción y la funcionalidad se encuentran para transformar la forma en que vives cada espacio.</p>
+          <div class="hero__actions reveal">
+            <a href="#contacto" class="btn btn--solid">Agendar asesoría</a>
+            <a href="#portafolio" class="btn btn--ghost">Ver proyectos</a>
+          </div>
+        </div>
+
+        <!-- Escena 3D flotante (render isométrico real del estudio) con inclinación al mover el mouse -->
+        <div class="hero__stage reveal">
+          <div class="hero__tilt" id="heroTilt">
+            <div class="hero__float">
+              <span class="hero__render-shadow" aria-hidden="true"></span>
+              <div class="hero__render">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/render-3d-1440.webp" />
+                  <img src="assets/img/render-3d-1440.jpg" alt="Visualización 3D isométrica de un ambiente diseñado por Elías Coneo" width="1440" height="728" fetchpriority="high" />
+                </picture>
+              </div>
+              <span class="hero__badge" aria-hidden="true">
+                <span class="hero__badge-num">3D</span>
+                <span class="hero__badge-txt">Diseño<br />Conceptual</span>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
