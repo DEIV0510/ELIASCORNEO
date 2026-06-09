@@ -1,0 +1,13 @@
+{
+  "name": "Elías Coneo — Diseño Interior & Experiencias",
+  "short_name": "Elías Coneo",
+  "description": "Diseñamos espacios que se viven, se sienten y se recuerdan.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F353C",
+  "theme_color": "#0F353C",
+  "icons": [
+    { "src": "assets/favicon/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "assets/favicon/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

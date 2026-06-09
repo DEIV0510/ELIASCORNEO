@@ -1,0 +1,14 @@
+# Dependencias
+node_modules/
+
+# Artefactos de build / desarrollo
+shots/
+.playwright-mcp/
+*.log
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
