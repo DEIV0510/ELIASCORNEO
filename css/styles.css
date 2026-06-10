@@ -339,9 +339,11 @@ body::after{
 .media--teal .media__plate{background:radial-gradient(120% 100% at 30% 10%,rgba(110,82,56,.45),transparent 55%),linear-gradient(150deg,var(--teal),var(--teal-2))}
 .media--teal .media__plate::before{background-image:url("../assets/logo/icon-cream-320.png");opacity:.16;mix-blend-mode:normal}
 .media--teal .media__plate::after{background:repeating-linear-gradient(180deg,transparent 0 16px,rgba(197,164,109,.07) 16px 17px)}
+/* etiqueta de espacio reservado (se oculta cuando la foto carga, pues el img la cubre) */
+.media__hint{position:absolute;left:0;right:0;bottom:13%;z-index:1;text-align:center;font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe);pointer-events:none}
 
 /* ============================ COLECCIÓN ============================ */
-.coleccion{position:relative;background:var(--teal);color:var(--cream);padding:var(--sp-section) 0;overflow:hidden}
+.coleccion{position:relative;background:var(--teal);color:var(--cream);padding:clamp(62px,8vw,116px) 0;overflow:hidden}
 .coleccion .section-head__sub{color:rgba(247,244,238,.72)}
 .coleccion .display{color:var(--cream)}
 .coleccion__waves{position:absolute;inset:0;z-index:0;opacity:.5;pointer-events:none;
@@ -355,19 +357,19 @@ body::after{
 .coleccion .container{position:relative;z-index:1}
 .coleccion .display--xl{font-size:clamp(2.6rem,9vw,6.6rem);letter-spacing:0;line-height:.9}
 
-.coleccion__lead{max-width:58ch;margin:0 auto clamp(34px,4.5vw,58px);text-align:center;font-weight:300;font-size:clamp(1.12rem,1.85vw,1.5rem);line-height:1.55;color:var(--blush)}
+.coleccion__lead{max-width:64ch;margin:0 auto clamp(22px,2.8vw,38px);text-align:center;font-weight:300;font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.45;color:var(--blush)}
 .coleccion__lead em{font-style:italic;color:var(--gold-soft)}
-.coleccion__grid{display:grid;grid-template-columns:1fr 1.6fr 1fr;gap:clamp(14px,2vw,28px);align-items:center}
+.coleccion__grid{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:clamp(12px,1.6vw,22px);align-items:center}
 
-/* Manifiesto editorial */
-.coleccion__manifiesto{max-width:60ch;margin:clamp(48px,6vw,84px) auto 0;text-align:center;display:flex;flex-direction:column;gap:1.6em}
-.coleccion__manifiesto p{font-weight:300;font-size:clamp(1rem,1.25vw,1.12rem);line-height:1.75;color:rgba(244,238,229,.8)}
+/* Manifiesto editorial (compacto) */
+.coleccion__manifiesto{max-width:66ch;margin:clamp(26px,3.4vw,46px) auto 0;text-align:center;display:flex;flex-direction:column;gap:1.05em}
+.coleccion__manifiesto p{font-weight:300;font-size:clamp(.98rem,1.15vw,1.08rem);line-height:1.6;color:rgba(244,238,229,.8)}
 .coleccion__manifiesto em{font-style:italic;color:var(--gold-soft)}
-.coleccion__manifiesto .coleccion__pull{font-style:italic;font-size:clamp(1.25rem,2.3vw,1.75rem);line-height:1.42;color:var(--blush);max-width:26ch;margin-inline:auto}
-.coleccion__manifiesto .coleccion__statement{font-style:italic;font-weight:300;font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.32;color:var(--cream);max-width:24ch;margin:.3em auto;letter-spacing:.002em}
+.coleccion__manifiesto .coleccion__pull{font-style:italic;font-size:clamp(1.12rem,1.9vw,1.5rem);line-height:1.32;color:var(--blush);max-width:36ch;margin-inline:auto}
+.coleccion__manifiesto .coleccion__statement{font-style:italic;font-weight:300;font-size:clamp(1.3rem,2.2vw,1.9rem);line-height:1.22;color:var(--cream);max-width:34ch;margin:.1em auto;letter-spacing:.002em}
 .coleccion__manifiesto .coleccion__statement em{font-style:italic;color:var(--gold)}
-.coleccion__manifiesto .coleccion__closing{font-size:clamp(1.05rem,1.5vw,1.28rem);color:var(--blush)}
-.coleccion__manifiesto .coleccion__sign{font-family:var(--font-body);font-style:italic;font-weight:500;color:var(--gold);font-size:1.2rem;margin-top:.6em;letter-spacing:.02em}
+.coleccion__manifiesto .coleccion__closing{font-size:clamp(1.02rem,1.4vw,1.2rem);color:var(--blush)}
+.coleccion__manifiesto .coleccion__sign{font-family:var(--font-body);font-style:italic;font-weight:500;color:var(--gold);font-size:1.12rem;margin-top:.35em;letter-spacing:.02em}
 
 /* Countdown */
 .countdown{margin-top:clamp(48px,6vw,80px);text-align:center}
