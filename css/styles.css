@@ -406,7 +406,7 @@ body::after{
 
 /* Proyecto destacado (ancho completo) */
 .project--feat{display:block;margin-bottom:14px}
-.media--feat{aspect-ratio:16/7.2}
+.media--feat{aspect-ratio:16/8.6}
 
 /* Mosaico compacto tipo masonry (columnas, gaps mínimos → imágenes poco divididas) */
 .portafolio__mosaic{column-count:3;column-gap:14px}
@@ -580,6 +580,18 @@ body.has-cursor input,body.has-cursor textarea,body.has-cursor select{cursor:aut
 
 /* Botones magnéticos (el desplazamiento lo aplica JS) */
 .btn[data-magnetic]{transition:transform .4s var(--ease),color .5s var(--ease),background .5s,border-color .5s}
+
+/* ============================ REDES · FEED SOCIAL ============================ */
+.social{padding:clamp(56px,8vw,104px) 0;background:var(--cream-2);overflow:hidden;border-top:1px solid var(--line)}
+.social__head{text-align:center;margin-bottom:clamp(32px,4vw,54px)}
+.social__head .display{color:var(--ink)}
+.social__head .section-head__sub{margin-inline:auto}
+.social__marquee{display:block;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.social__track{display:flex;gap:14px;width:max-content;animation:marquee 60s linear infinite}
+.social__marquee:hover .social__track{animation-play-state:paused}
+.social__item{flex:0 0 auto;width:clamp(150px,15vw,210px);aspect-ratio:4/5;overflow:hidden;border-radius:var(--radius);box-shadow:var(--shadow-soft);background:var(--sand)}
+.social__item img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.social__marquee:hover .social__item img{transform:scale(1.04)}
 
 /* ============================ RESPONSIVE ============================ */
 @media (max-width:1024px){
