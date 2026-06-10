@@ -471,12 +471,15 @@
           </div>
         </div>
 
-        <figure class="media media--portrait media--sand estudio__photo reveal" data-parallax>
-          <!-- ESPACIO RESERVADO para el retrato de Elías → sube assets/img/elias-retrato.jpg (vertical 4:5, ~1000×1250) -->
-          <img src="assets/img/elias-retrato.jpg" alt="Retrato de Elías Coneo Díaz" loading="lazy" width="1000" height="1250" onerror="this.closest('.media').classList.add('is-empty');this.remove();" />
-          <span class="media__plate" aria-hidden="true"></span>
-          <span class="media__hint" aria-hidden="true">Retrato de Elías</span>
-        </figure>
+        <article class="project estudio__photo reveal" data-name="Elías Coneo Díaz" data-info="Fundador · Diseñador de interiores" data-images="assets/img/elias-1.jpg,assets/img/elias-2.jpg">
+          <figure class="media media--portrait">
+            <picture>
+              <source type="image/webp" srcset="assets/img/elias-1.webp" />
+              <img src="assets/img/elias-1.jpg" alt="Retrato de Elías Coneo Díaz, diseñador de interiores" loading="lazy" width="747" height="737" />
+            </picture>
+            <div class="project__overlay"><h3 class="project__name">Elías Coneo Díaz</h3><p class="project__info"><span>Fundador · Diseñador</span></p><span class="project__view">Ver fotos</span></div>
+          </figure>
+        </article>
       </div>
     </section>
 
