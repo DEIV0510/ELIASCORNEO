@@ -590,6 +590,27 @@ body.has-cursor input,body.has-cursor textarea,body.has-cursor select{cursor:aut
 .social__item img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 .social__marquee:hover .social__item img{transform:scale(1.04)}
 
+/* ============================ EN MOVIMIENTO · VIDEOS ============================ */
+.reel{padding:var(--sp-section) 0;background:var(--cream-2);border-top:1px solid var(--line)}
+.reel__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,30px);max-width:900px;margin-inline:auto}
+.reel__item{position:relative;aspect-ratio:3/4;border-radius:8px;overflow:hidden;box-shadow:var(--shadow-soft);background:var(--sand);cursor:default}
+.reel__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.reel__cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:clamp(14px,1.6vw,22px);display:flex;flex-direction:column;gap:.25em;background:linear-gradient(to top,rgba(42,33,22,.82),rgba(42,33,22,.15) 55%,transparent)}
+.reel__name{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(1rem,1.5vw,1.3rem);color:var(--cream);line-height:1;letter-spacing:.01em}
+.reel__loc{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,238,229,.82)}
+.reel__sound{position:absolute;top:12px;right:12px;z-index:3;width:40px;height:40px;border-radius:50%;background:rgba(42,33,22,.45);border:1px solid rgba(244,238,229,.3);color:var(--cream);display:grid;place-items:center;backdrop-filter:blur(4px);transition:background .3s,transform .3s;cursor:pointer}
+.reel__sound:hover{background:rgba(42,33,22,.72);transform:scale(1.06)}
+.reel__sound .snd-on{display:none}
+.reel__sound.is-on .snd-off{display:none}
+.reel__sound.is-on .snd-on{display:block}
+.reel__video[controls]{object-fit:contain;background:#1a140d}
+/* móvil: carrusel horizontal con snap (los 3 verticales no se apilan gigantes) */
+@media (max-width:720px){
+  .reel__grid{display:flex;gap:14px;max-width:none;margin-inline:calc(var(--gut)*-1);padding-inline:var(--gut);overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .reel__grid::-webkit-scrollbar{display:none}
+  .reel__item{flex:0 0 70%;scroll-snap-align:center}
+}
+
 /* ============================ RESPONSIVE ============================ */
 @media (max-width:1024px){
   .nav{display:none}

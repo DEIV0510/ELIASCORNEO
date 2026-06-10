@@ -383,4 +383,43 @@
     });
   })();
 
+  /* ============================ EN MOVIMIENTO · VIDEOS ============================ */
+  (function reel() {
+    var vids = $$('.reel__video');
+    if (!vids.length) return;
+
+    // Respeta "reducir movimiento": sin autoplay, controles nativos para reproducir a voluntad.
+    if (reduceMotion) {
+      vids.forEach(function (v) { v.setAttribute('controls', ''); v.removeAttribute('loop'); });
+      $$('.reel__sound').forEach(function (b) { b.style.display = 'none'; });
+      return;
+    }
+
+    function play(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) play(e.target);
+          else e.target.pause();
+        });
+      }, { threshold: 0.35 });
+      vids.forEach(function (v) { io.observe(v); });
+    } else {
+      vids.forEach(play);
+    }
+
+    // Activar / silenciar sonido por clip (arrancan en mute por requisito de autoplay).
+    $$('.reel__sound').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var v = btn.closest('.reel__item').querySelector('video');
+        if (!v) return;
+        v.muted = !v.muted;
+        btn.classList.toggle('is-on', !v.muted);
+        btn.setAttribute('aria-label', v.muted ? 'Activar sonido' : 'Silenciar');
+        if (!v.muted) play(v);
+      });
+    });
+  })();
+
 })();
