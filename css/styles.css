@@ -1,7 +1,7 @@
 /* =========================================================================
    ELÍAS CONEO · Diseño Interior & Experiencias
    Landing premium — editorial luxury · paleta marfil / terracota / teal
-   Tipografía: Cormorant Garamond (display) + Chillax/Jost (texto)
+   Tipografía: Anton (titulares de impacto, mayúsculas) + Montserrat (texto + itálicas)
    ========================================================================= */
 
 /* ============================ TOKENS ============================ */
@@ -25,8 +25,8 @@
   --line:rgba(31,31,31,.14);
   --line-light:rgba(247,244,238,.18);
 
-  --font-display:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-  --font-body:'Chillax','Jost', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --font-display:'Anton', 'Archivo Black', Impact, system-ui, sans-serif;
+  --font-body:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 
   --container:1280px;
   --gut:clamp(20px,5vw,64px);
@@ -47,12 +47,12 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 
 body{
   font-family:var(--font-body);
-  font-weight:300;
+  font-weight:400;
   color:var(--ink);
   background:var(--cream);
   line-height:1.7;
-  font-size:clamp(15px,1.05vw,17px);
-  letter-spacing:.005em;
+  font-size:clamp(15px,1.05vw,16.5px);
+  letter-spacing:.002em;
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
@@ -84,13 +84,13 @@ body::after{
 
 /* ============================ TYPOGRAPHY ============================ */
 .display{
-  font-family:var(--font-display);font-weight:400;line-height:1.04;
-  letter-spacing:-.01em;color:var(--ink);
-  font-size:clamp(2.1rem,5.4vw,4.4rem);
+  font-family:var(--font-display);font-weight:400;line-height:.96;
+  letter-spacing:.005em;color:var(--ink);text-transform:uppercase;
+  font-size:clamp(1.95rem,4.7vw,3.9rem);
 }
-.display--xl{font-size:clamp(2.6rem,7.6vw,6.4rem)}
+.display--xl{font-size:clamp(2.3rem,6.4vw,5.4rem);line-height:.92}
 .display--light{color:var(--cream)}
-.display em{font-style:italic;color:var(--terracotta)}
+.display em{font-style:normal;color:var(--terracotta)}
 .display--light em{color:var(--gold)}
 
 .lead{font-size:clamp(1.05rem,1.6vw,1.35rem);font-weight:400;color:var(--ink-2);line-height:1.6}
@@ -111,7 +111,7 @@ body::after{
 .section-head__sub{margin-top:1.2rem;color:var(--taupe);font-size:1.05rem;max-width:46ch}
 .section-head--center .section-head__sub{margin-inline:auto}
 
-.amp{font-style:italic;color:var(--terracotta);font-weight:400}
+.amp{font-style:normal;color:var(--terracotta);font-weight:400}
 
 /* ============================ BUTTONS ============================ */
 .btn{
@@ -186,7 +186,7 @@ body::after{
 .menu-open .mobile-menu{clip-path:circle(150% at calc(100% - 40px) 40px);visibility:visible}
 .mobile-menu__nav{display:flex;flex-direction:column;gap:8px}
 .mobile-menu__link{
-  font-family:var(--font-display);font-size:clamp(2rem,9vw,3rem);color:var(--cream);line-height:1.15;
+  font-family:var(--font-display);font-size:clamp(1.8rem,8vw,2.7rem);color:var(--cream);line-height:1.05;text-transform:uppercase;letter-spacing:.01em;
   display:flex;align-items:baseline;gap:18px;opacity:0;transform:translateY(20px);
   transition:opacity .5s var(--ease),transform .5s var(--ease),color .3s
 }
@@ -228,8 +228,8 @@ body::after{
 }
 @keyframes shimmer{0%{left:-60%}100%{left:130%}}
 .loader__caption{
-  font-family:var(--font-display);font-style:italic;font-size:clamp(1rem,2.4vw,1.5rem);
-  color:var(--gold);letter-spacing:.04em;margin-top:16px;opacity:0;
+  font-family:var(--font-body);font-style:italic;font-weight:400;font-size:clamp(.95rem,2.2vw,1.35rem);
+  color:var(--gold);letter-spacing:.08em;margin-top:18px;opacity:0;
   animation:fadeUp 1.1s var(--ease) 1s forwards
 }
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:.95;transform:none}}
@@ -267,8 +267,8 @@ body::after{
 
 .hero__inner{width:100%;max-width:var(--container);margin-inline:auto;display:grid;grid-template-columns:1fr 1.04fr;gap:clamp(28px,5vw,70px);align-items:center}
 .hero__copy{max-width:600px}
-.hero__title{font-family:var(--font-display);font-weight:400;line-height:1.03;letter-spacing:-.012em;font-size:clamp(2.3rem,5.2vw,4.8rem);color:var(--cream);margin-bottom:.45em}
-.hero__title em{font-style:italic;color:var(--gold)}
+.hero__title{font-family:var(--font-display);font-weight:400;line-height:.94;letter-spacing:.004em;font-size:clamp(2.1rem,4.8vw,4.1rem);color:var(--cream);margin-bottom:.5em;text-transform:uppercase}
+.hero__title em{font-style:normal;color:var(--gold)}
 .hero__subtitle{max-width:50ch;margin:0 0 2.1em;font-size:clamp(1rem,1.35vw,1.18rem);color:rgba(247,244,238,.85);font-weight:300}
 .hero__actions{display:flex;gap:16px;flex-wrap:wrap}
 
@@ -306,10 +306,10 @@ body::after{
 /* ============================ SLOGAN ============================ */
 .slogan{background:var(--cream);padding:clamp(60px,9vw,120px) 0;text-align:center;border-bottom:1px solid var(--line)}
 .slogan__text{
-  font-family:var(--font-display);font-weight:300;font-size:clamp(1.5rem,4.4vw,3.1rem);
-  line-height:1.25;color:var(--ink);max-width:18ch;margin-inline:auto;letter-spacing:-.01em
+  font-family:var(--font-body);font-weight:300;font-size:clamp(1.35rem,3.4vw,2.5rem);
+  line-height:1.32;color:var(--ink);max-width:24ch;margin-inline:auto;letter-spacing:-.01em
 }
-.slogan__text em{font-style:italic;color:var(--terracotta)}
+.slogan__text em{font-style:italic;font-weight:500;color:var(--terracotta)}
 
 /* ============================ MEDIA / PLACEHOLDERS ============================ */
 .media{position:relative;overflow:hidden;border-radius:var(--radius);background:var(--sand-2)}
@@ -353,12 +353,12 @@ body::after{
   animation:drift 18s linear infinite}
 @keyframes drift{to{background-position:240px 0}}
 .coleccion .container{position:relative;z-index:1}
-.coleccion .display--xl{font-size:clamp(3rem,11vw,8rem);letter-spacing:-.02em}
+.coleccion .display--xl{font-size:clamp(2.6rem,9vw,6.6rem);letter-spacing:0;line-height:.9}
 
 .coleccion__grid{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:clamp(16px,2.4vw,34px);align-items:center;margin-top:clamp(30px,4vw,56px)}
 .coleccion__center{display:flex;flex-direction:column;gap:clamp(20px,3vw,34px)}
 .coleccion__meaning{display:flex;flex-direction:column;gap:.55em;text-align:center}
-.coleccion__meaning li{font-family:var(--font-display);font-style:italic;font-size:clamp(1.05rem,1.8vw,1.5rem);color:var(--blush);line-height:1.3;opacity:.92}
+.coleccion__meaning li{font-family:var(--font-body);font-weight:300;font-style:italic;font-size:clamp(1rem,1.6vw,1.32rem);color:var(--blush);line-height:1.35;opacity:.92}
 .coleccion__meaning li::before{content:"·";color:var(--gold);margin-right:.5em}
 
 /* Countdown */
@@ -374,7 +374,7 @@ body::after{
 .filosofia__grid{display:grid;grid-template-columns:.85fr 1fr;gap:clamp(36px,6vw,96px);align-items:center}
 .filosofia__text > *+*{margin-top:1.2em}
 .filosofia__text .display{margin-bottom:.1em}
-.signature{font-family:var(--font-display);font-style:italic;font-size:2rem;color:var(--terracotta);margin-top:1em !important;opacity:.9}
+.signature{font-family:var(--font-body);font-style:italic;font-weight:500;font-size:1.4rem;color:var(--terracotta);margin-top:1em !important;opacity:.9;letter-spacing:.01em}
 
 /* ============================ SERVICIOS ============================ */
 .servicios{padding:var(--sp-section) 0;background:var(--cream-2);border-block:1px solid var(--line)}
@@ -390,7 +390,7 @@ body::after{
 .service__icon{display:block;color:var(--teal);margin:32px 0 20px;transition:transform .6s var(--ease),color .4s}
 .service__icon svg{width:46px;height:46px}
 .service:hover .service__icon{transform:translateY(-4px);color:var(--terracotta)}
-.service__title{font-family:var(--font-display);font-weight:500;font-size:1.5rem;line-height:1.12;margin-bottom:.5em;color:var(--ink)}
+.service__title{font-family:var(--font-body);font-weight:700;font-size:1.16rem;line-height:1.22;margin-bottom:.55em;color:var(--ink);letter-spacing:-.01em}
 .service__desc{font-size:.95rem;color:var(--taupe);line-height:1.55}
 
 /* ============================ PORTAFOLIO ============================ */
@@ -408,7 +408,7 @@ body::after{
 }
 .project:hover .project__view{opacity:1;transform:translate(-50%,-50%) scale(1)}
 .project__meta{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
-.project__name{font-family:var(--font-display);font-weight:500;font-size:clamp(1.3rem,2.4vw,1.9rem);color:var(--ink)}
+.project__name{font-family:var(--font-body);font-weight:700;font-size:clamp(1.05rem,1.8vw,1.45rem);color:var(--ink);text-transform:uppercase;letter-spacing:.015em}
 .project__info{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe);display:flex;gap:.7em;align-items:center;text-align:right}
 .dot{opacity:.5}
 
@@ -419,8 +419,8 @@ body::after{
 .timeline::before{content:"";position:absolute;top:34px;left:0;right:0;height:1px;background:rgba(247,244,238,.2)}
 .timeline__step{position:relative;padding-top:64px}
 .timeline__step::before{content:"";position:absolute;top:29px;left:0;width:11px;height:11px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 6px var(--teal)}
-.timeline__num{position:absolute;top:0;left:0;font-family:var(--font-display);font-style:italic;font-size:1.1rem;color:var(--gold)}
-.timeline__title{font-family:var(--font-display);font-weight:500;font-size:clamp(1.4rem,2.4vw,2rem);margin-bottom:.4em;color:var(--cream)}
+.timeline__num{position:absolute;top:0;left:0;font-family:var(--font-display);font-style:normal;font-size:1.25rem;color:var(--gold);letter-spacing:.02em}
+.timeline__title{font-family:var(--font-body);font-weight:700;font-size:clamp(1.1rem,1.9vw,1.5rem);margin-bottom:.45em;color:var(--cream);text-transform:uppercase;letter-spacing:.01em}
 .timeline__desc{font-size:.95rem;color:rgba(247,244,238,.72);max-width:24ch}
 
 /* ============================ TESTIMONIOS ============================ */
@@ -428,7 +428,7 @@ body::after{
 .testi{position:relative;max-width:880px;margin-inline:auto;min-height:220px}
 .testi__item{position:absolute;inset:0;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 .testi__item.is-active{opacity:1;visibility:visible;transform:none;position:relative}
-.testi__quote{font-family:var(--font-display);font-style:italic;font-weight:400;font-size:clamp(1.4rem,3.4vw,2.4rem);line-height:1.3;color:var(--ink);letter-spacing:-.005em}
+.testi__quote{font-family:var(--font-body);font-style:italic;font-weight:300;font-size:clamp(1.2rem,2.5vw,1.85rem);line-height:1.42;color:var(--ink);letter-spacing:-.005em}
 .testi__author{margin-top:1.6em;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terracotta);display:flex;gap:.7em;justify-content:center;align-items:center}
 .testi__author .dot{color:var(--taupe)}
 .testi__dots{display:flex;gap:10px;justify-content:center;margin-top:40px}
@@ -479,7 +479,7 @@ body::after{
 .footer{background:var(--teal-2);color:var(--cream);padding:clamp(56px,7vw,96px) 0 0}
 .footer__inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:clamp(30px,4vw,60px);padding-bottom:clamp(40px,5vw,72px)}
 .footer__logo{height:auto;width:clamp(120px,12vw,168px);margin-bottom:20px}
-.footer__tagline{font-family:var(--font-display);font-style:italic;font-size:1.15rem;color:rgba(247,244,238,.78);max-width:26ch;line-height:1.4}
+.footer__tagline{font-family:var(--font-body);font-style:italic;font-weight:300;font-size:1.02rem;color:rgba(247,244,238,.78);max-width:26ch;line-height:1.5}
 .footer__title{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6em;font-weight:500}
 .footer__col{display:flex;flex-direction:column;gap:.85em}
 .footer__col a,.footer__static{font-size:.92rem;color:rgba(247,244,238,.72);transition:color .3s;width:fit-content}

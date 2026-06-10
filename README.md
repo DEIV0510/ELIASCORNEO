@@ -23,7 +23,7 @@ dependencias en tiempo de ejecución). Lista para abrir desde `index.html`.
 ## 🎨 Marca
 | | |
 |---|---|
-| **Tipografías** | Cormorant Garamond (títulos) · Chillax/Jost (texto) |
+| **Tipografías** | Anton (titulares de impacto, mayúsculas) · Montserrat (texto + itálicas) |
 | **Marfil** `#F7F4EE` · **Arena** `#D8CBB8` · **Topo** `#8A8175` | **Teal** `#0F353C` · **Terracota** `#A56937` · **Sienna** `#7F4920` · **Blush** `#FCEDE3` · **Dorado** `#C5A46D` |
 
 ## 📁 Estructura
