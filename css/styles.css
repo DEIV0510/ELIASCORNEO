@@ -355,11 +355,19 @@ body::after{
 .coleccion .container{position:relative;z-index:1}
 .coleccion .display--xl{font-size:clamp(2.6rem,9vw,6.6rem);letter-spacing:0;line-height:.9}
 
-.coleccion__grid{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:clamp(16px,2.4vw,34px);align-items:center;margin-top:clamp(30px,4vw,56px)}
-.coleccion__center{display:flex;flex-direction:column;gap:clamp(20px,3vw,34px)}
-.coleccion__meaning{display:flex;flex-direction:column;gap:.55em;text-align:center}
-.coleccion__meaning li{font-family:var(--font-body);font-weight:300;font-style:italic;font-size:clamp(1rem,1.6vw,1.32rem);color:var(--blush);line-height:1.35;opacity:.92}
-.coleccion__meaning li::before{content:"·";color:var(--gold);margin-right:.5em}
+.coleccion__lead{max-width:58ch;margin:0 auto clamp(34px,4.5vw,58px);text-align:center;font-weight:300;font-size:clamp(1.12rem,1.85vw,1.5rem);line-height:1.55;color:var(--blush)}
+.coleccion__lead em{font-style:italic;color:var(--gold-soft)}
+.coleccion__grid{display:grid;grid-template-columns:1fr 1.6fr 1fr;gap:clamp(14px,2vw,28px);align-items:center}
+
+/* Manifiesto editorial */
+.coleccion__manifiesto{max-width:60ch;margin:clamp(48px,6vw,84px) auto 0;text-align:center;display:flex;flex-direction:column;gap:1.6em}
+.coleccion__manifiesto p{font-weight:300;font-size:clamp(1rem,1.25vw,1.12rem);line-height:1.75;color:rgba(244,238,229,.8)}
+.coleccion__manifiesto em{font-style:italic;color:var(--gold-soft)}
+.coleccion__manifiesto .coleccion__pull{font-style:italic;font-size:clamp(1.25rem,2.3vw,1.75rem);line-height:1.42;color:var(--blush);max-width:26ch;margin-inline:auto}
+.coleccion__manifiesto .coleccion__statement{font-style:italic;font-weight:300;font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.32;color:var(--cream);max-width:24ch;margin:.3em auto;letter-spacing:.002em}
+.coleccion__manifiesto .coleccion__statement em{font-style:italic;color:var(--gold)}
+.coleccion__manifiesto .coleccion__closing{font-size:clamp(1.05rem,1.5vw,1.28rem);color:var(--blush)}
+.coleccion__manifiesto .coleccion__sign{font-family:var(--font-body);font-style:italic;font-weight:500;color:var(--gold);font-size:1.2rem;margin-top:.6em;letter-spacing:.02em}
 
 /* Countdown */
 .countdown{margin-top:clamp(48px,6vw,80px);text-align:center}
@@ -578,8 +586,8 @@ body.has-cursor input,body.has-cursor textarea,body.has-cursor select{cursor:aut
   .nav{display:none}
   .btn--nav{display:none}
   .nav-toggle{display:flex}
-  .coleccion__grid{grid-template-columns:1fr 1fr;gap:20px}
-  .coleccion__center{grid-column:1 / -1;order:-1}
+  .coleccion__grid{grid-template-columns:1fr;gap:16px;max-width:520px;margin-inline:auto}
+  .coleccion__render{order:-1}
   .estudio__grid{grid-template-columns:1fr;gap:48px}
   .estudio__photo{justify-self:start;max-width:520px}
   .cta__inner{grid-template-columns:1fr;gap:40px}

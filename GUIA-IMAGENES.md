@@ -63,11 +63,11 @@ Es una **galería mosaico (masonry) + lightbox**. El **Proyecto destacado (Casa 
 
 ---
 
-## ✍️ Datos de contacto a reemplazar (placeholders)
-En **`js/main.js`** (arriba del todo, objeto `CONFIG`):
-- `whatsapp`: número real con código de país (ej. `573001234567`).
-
-En **`index.html`** (footer + JSON-LD):
-- Correo (`hola@eliasconeo.com`), Instagram (`@eliasconeo`), ciudad/ubicación, teléfono.
+## ✍️ Datos de contacto (ya configurados ✓)
+- **WhatsApp:** 321 410 1991 (`573214101991` en `js/main.js` → `CONFIG`)
+- **Instagram:** [@eliasconeointerior](https://www.instagram.com/eliasconeointerior)
+- **TikTok:** [@eliasconeointerior](https://www.tiktok.com/@eliasconeointerior)
+- **Titular:** Elías Coneo Díaz
+- _Pendiente (opcional): correo electrónico y ciudad específica, si quieres agregarlos al footer._
 
 > Cuando tengas las fotos, pásamelas y las **integro, optimizo y convierto a WebP** por ti.

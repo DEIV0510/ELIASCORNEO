@@ -7,7 +7,7 @@
   /* ---------- CONFIGURACIÓN EDITABLE ----------
      Reemplaza estos datos por los reales del cliente. */
   var CONFIG = {
-    whatsapp: '573000000000',           // ← número real con código país, sin + ni espacios
+    whatsapp: '573214101991',            // número real (Elías Coneo Díaz)
     waText: 'Hola Elías Coneo, me gustaría agendar una asesoría de diseño interior.'
   };
 
