@@ -68,6 +68,8 @@
 
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
 
   <!-- ============================ LOADER · DESPUÉS DEL AGUA ============================ -->
   <div class="loader" id="loader" role="status" aria-live="polite" aria-label="Cargando Elías Coneo">
@@ -146,12 +148,12 @@
 
       <div class="hero__inner">
         <div class="hero__copy">
-          <p class="eyebrow eyebrow--light reveal">Diseño Interior &amp; Experiencias · Colombia</p>
+          <p class="eyebrow eyebrow--gold reveal">Diseño Interior &amp; Experiencias · Colombia</p>
           <h1 class="hero__title reveal">Diseñamos espacios que se convierten en <em>experiencias</em> memorables.</h1>
           <p class="hero__subtitle reveal">Creamos interiores residenciales y comerciales donde el diseño, la emoción y la funcionalidad se encuentran para transformar la forma en que vives cada espacio.</p>
           <div class="hero__actions reveal">
-            <a href="#contacto" class="btn btn--solid">Agendar asesoría</a>
-            <a href="#portafolio" class="btn btn--ghost">Ver proyectos</a>
+            <a href="#contacto" class="btn btn--solid" data-magnetic>Agendar asesoría</a>
+            <a href="#portafolio" class="btn btn--ghost" data-magnetic>Ver proyectos</a>
           </div>
         </div>
 
@@ -186,6 +188,22 @@
         <p class="slogan__text reveal">Diseñamos espacios que se <em>viven</em>, se <em>sienten</em> y se <em>recuerdan</em>.</p>
       </div>
     </section>
+
+    <!-- ============================ MARQUEE EN MOVIMIENTO ============================ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span class="marquee__item">Diseño Interior</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Experiencias</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Bienestar</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Armonía</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Luz &amp; Materia</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Diseño Interior</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Experiencias</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Bienestar</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Armonía</span><span class="marquee__sep">✦</span>
+        <span class="marquee__item">Luz &amp; Materia</span><span class="marquee__sep">✦</span>
+      </div>
+    </div>
 
     <!-- ============================ COLECCIÓN · DESPUÉS DEL AGUA ============================ -->
     <section class="coleccion" id="coleccion">

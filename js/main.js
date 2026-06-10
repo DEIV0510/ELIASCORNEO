@@ -282,4 +282,55 @@
     });
   })();
 
+  /* ============================ CURSOR · MAGNÉTICOS · PROGRESO ============================ */
+  (function interactions() {
+    var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    /* Cursor personalizado (solo escritorio, respeta reduce-motion) */
+    var cur = $('#cursor');
+    if (cur && fine && !reduceMotion) {
+      document.body.classList.add('has-cursor');
+      var cx = window.innerWidth / 2, cy = window.innerHeight / 2, tx = cx, ty = cy, started = false;
+      function loop() {
+        cx += (tx - cx) * 0.2; cy += (ty - cy) * 0.2;
+        cur.style.transform = 'translate(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px) translate(-50%,-50%)';
+        requestAnimationFrame(loop);
+      }
+      window.addEventListener('mousemove', function (e) {
+        tx = e.clientX; ty = e.clientY;
+        if (!started) { started = true; cur.classList.add('is-active'); loop(); }
+      });
+      var SEL = 'a,button,[data-magnetic],.project,.service,.media,input,textarea,select';
+      document.addEventListener('mouseover', function (e) { if (e.target.closest && e.target.closest(SEL)) cur.classList.add('is-hover'); });
+      document.addEventListener('mouseout', function (e) { if (e.target.closest && e.target.closest(SEL)) cur.classList.remove('is-hover'); });
+      document.addEventListener('mouseleave', function () { cur.classList.remove('is-active'); });
+      document.addEventListener('mouseenter', function () { cur.classList.add('is-active'); });
+    }
+
+    /* Botones magnéticos */
+    if (fine && !reduceMotion) {
+      $$('[data-magnetic]').forEach(function (btn) {
+        btn.addEventListener('mousemove', function (e) {
+          var r = btn.getBoundingClientRect();
+          var mx = e.clientX - (r.left + r.width / 2), my = e.clientY - (r.top + r.height / 2);
+          btn.style.transform = 'translate(' + (mx * 0.25).toFixed(1) + 'px,' + (my * 0.4).toFixed(1) + 'px)';
+        });
+        btn.addEventListener('mouseleave', function () { btn.style.transform = ''; });
+      });
+    }
+
+    /* Barra de progreso de scroll */
+    var bar = $('#scrollProgress');
+    if (bar) {
+      var updBar = function () {
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        var p = h > 0 ? window.pageYOffset / h : 0;
+        bar.style.transform = 'scaleX(' + Math.min(1, Math.max(0, p)).toFixed(4) + ')';
+      };
+      window.addEventListener('scroll', updBar, { passive: true });
+      window.addEventListener('resize', updBar, { passive: true });
+      updBar();
+    }
+  })();
+
 })();
