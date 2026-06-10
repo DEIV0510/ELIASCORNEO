@@ -393,24 +393,65 @@ body::after{
 .service__title{font-family:var(--font-body);font-weight:700;font-size:1.16rem;line-height:1.22;margin-bottom:.55em;color:var(--ink);letter-spacing:-.01em}
 .service__desc{font-size:.95rem;color:var(--taupe);line-height:1.55}
 
-/* ============================ PORTAFOLIO ============================ */
+/* ============================ PORTAFOLIO · GALERÍA MOSAICO ============================ */
 .portafolio{padding:var(--sp-section) 0;background:var(--cream)}
-.portafolio__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(24px,3.4vw,56px) clamp(24px,3vw,48px)}
+
+/* Proyecto destacado (ancho completo) */
+.project--feat{display:block;margin-bottom:14px}
+.media--feat{aspect-ratio:16/7.2}
+
+/* Mosaico compacto tipo masonry (columnas, gaps mínimos → imágenes poco divididas) */
+.portafolio__mosaic{column-count:3;column-gap:14px}
+.portafolio__mosaic .project{break-inside:avoid;margin:0 0 14px;display:block}
+
 .project{position:relative}
-.project--lg{grid-column:1 / -1}
 .project .media{box-shadow:var(--shadow-soft)}
-.project:hover .media img{transform:scale(1.05)}
-.project__view{
-  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.9);z-index:3;
-  font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cream);
-  padding:14px 26px;border:1px solid rgba(244,238,229,.7);background:rgba(46,36,24,.22);backdrop-filter:blur(4px);
-  opacity:0;transition:opacity .5s var(--ease),transform .5s var(--ease);pointer-events:none;white-space:nowrap
+.project:hover .media img{transform:scale(1.06)}
+
+/* Caption SOBRE la imagen (sin divisiones) */
+.project__overlay{
+  position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:clamp(16px,1.7vw,28px);
+  background:linear-gradient(to top,rgba(42,33,22,.8) 0%,rgba(42,33,22,.26) 40%,transparent 70%);
+  transition:background .5s var(--ease)
 }
-.project:hover .project__view{opacity:1;transform:translate(-50%,-50%) scale(1)}
-.project__meta{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
-.project__name{font-family:var(--font-body);font-weight:700;font-size:clamp(1.05rem,1.8vw,1.45rem);color:var(--ink);text-transform:uppercase;letter-spacing:.015em}
-.project__info{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe);display:flex;gap:.7em;align-items:center;text-align:right}
-.dot{opacity:.5}
+.project:hover .project__overlay{background:linear-gradient(to top,rgba(42,33,22,.88) 0%,rgba(42,33,22,.42) 48%,rgba(42,33,22,.08) 82%)}
+.project__idx{font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:.6em}
+.project__name{font-family:var(--font-display);font-weight:400;font-size:clamp(1.05rem,1.7vw,1.6rem);line-height:1;color:var(--cream);text-transform:uppercase;letter-spacing:.01em}
+.project--feat .project__name{font-size:clamp(1.9rem,3.6vw,3.2rem)}
+.project__info{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,238,229,.82);display:flex;gap:.6em;align-items:center;margin-top:.6em;flex-wrap:wrap}
+.project__view{
+  margin-top:.9em;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cream);
+  display:inline-flex;align-items:center;gap:.5em;width:fit-content;
+  opacity:0;transform:translateY(8px);transition:opacity .45s var(--ease),transform .45s var(--ease)
+}
+.project__view::after{content:"+";font-size:1.15em;line-height:.6}
+.project:hover .project__view{opacity:1;transform:none}
+.dot{opacity:.55}
+
+.portafolio__more{display:flex;justify-content:center;margin-top:clamp(34px,4.5vw,60px)}
+
+/* ============================ LIGHTBOX ============================ */
+.lightbox{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,56px);background:rgba(28,22,15,.95);backdrop-filter:blur(10px);opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s}
+.lightbox.is-open{opacity:1;visibility:visible}
+.lightbox__stage{position:relative;max-width:1080px;width:100%;display:flex;flex-direction:column;align-items:center;gap:20px;transform:scale(.96);transition:transform .5s var(--ease)}
+.lightbox.is-open .lightbox__stage{transform:scale(1)}
+.lightbox__imgwrap{width:100%;display:flex;align-items:center;justify-content:center}
+.lightbox__imgwrap img{max-width:100%;max-height:74vh;width:auto;height:auto;border-radius:4px;box-shadow:0 40px 90px -30px rgba(0,0,0,.7)}
+.lightbox__ph{width:min(640px,84vw);aspect-ratio:4/3;border-radius:4px;display:grid;place-items:center;gap:14px;text-align:center;padding:30px;background:radial-gradient(120% 100% at 30% 10%,#fff,transparent 55%),linear-gradient(150deg,var(--cream),var(--sand))}
+.lightbox__ph img{width:84px;height:auto;opacity:.4;box-shadow:none;border-radius:0}
+.lightbox__ph span{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--taupe)}
+.lightbox__cap{display:flex;flex-direction:column;align-items:center;gap:.5em;text-align:center}
+.lightbox__name{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(1.4rem,3vw,2.3rem);color:var(--cream);line-height:1}
+.lightbox__info{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.lightbox__count{font-size:.64rem;letter-spacing:.2em;color:rgba(244,238,229,.5)}
+.lightbox__close{position:absolute;top:clamp(14px,3vw,28px);right:clamp(14px,3vw,28px);width:48px;height:48px;border-radius:50%;background:rgba(244,238,229,.1);border:1px solid rgba(244,238,229,.25);color:var(--cream);font-size:1.7rem;line-height:1;display:grid;place-items:center;transition:background .3s,transform .4s var(--ease);z-index:3}
+.lightbox__close:hover{background:rgba(244,238,229,.22);transform:rotate(90deg)}
+.lightbox__nav{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;background:rgba(244,238,229,.08);border:1px solid rgba(244,238,229,.22);color:var(--cream);font-size:1.9rem;line-height:0;display:grid;place-items:center;transition:background .3s;z-index:3}
+.lightbox__nav:hover{background:rgba(244,238,229,.2)}
+.lightbox__prev{left:clamp(6px,2vw,24px)}
+.lightbox__next{right:clamp(6px,2vw,24px)}
+@media (max-width:620px){.lightbox__nav{width:44px;height:44px;font-size:1.5rem}}
 
 /* ============================ PROCESO ============================ */
 .proceso{padding:var(--sp-section) 0;background:var(--teal);color:var(--cream);position:relative;overflow:hidden}
@@ -549,8 +590,9 @@ body.has-cursor input,body.has-cursor textarea,body.has-cursor select{cursor:aut
   .servicios__grid{grid-template-columns:repeat(2,1fr)}
   .servicios__grid .service:nth-child(4n){border-right:1px solid var(--line)}
   .servicios__grid .service:nth-child(2n){border-right:none}
-  .portafolio__grid{grid-template-columns:1fr;gap:36px}
-  .project--lg{grid-column:auto}
+  .portafolio__mosaic{column-count:2;column-gap:12px}
+  .portafolio__mosaic .project{margin-bottom:12px}
+  .media--feat{aspect-ratio:16/10}
   .timeline{grid-template-columns:1fr 1fr;gap:16px 24px}
   .timeline::before{display:none}
   .timeline__step{padding-top:56px}
@@ -564,6 +606,8 @@ body.has-cursor input,body.has-cursor textarea,body.has-cursor select{cursor:aut
   .hero__actions .btn{width:100%}
   .form__row{grid-template-columns:1fr}
   .coleccion__grid{grid-template-columns:1fr}
+  .portafolio__mosaic{column-count:1}
+  .media--feat{aspect-ratio:4/3}
   .coleccion__meaning li{font-size:1.15rem}
   .countdown__grid{gap:14px}
   .servicios__grid{grid-template-columns:1fr}

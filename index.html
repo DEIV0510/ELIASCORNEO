@@ -337,91 +337,99 @@
           <p class="section-head__sub">Una selección de espacios donde el diseño se convirtió en experiencia.</p>
         </header>
 
-        <div class="portafolio__grid">
-          <!-- Proyecto 1 — usa la fotografía real disponible -->
-          <article class="project project--lg reveal">
-            <figure class="media media--landscape">
-              <picture>
-                <source type="image/webp" srcset="assets/img/interior-real-900.webp" />
-                <img src="assets/img/interior-real-900.jpg" alt="Casa Marea — Proyecto residencial diseñado por Elías Coneo" loading="lazy" width="900" height="438" />
-              </picture>
-              <span class="project__view" aria-hidden="true">Ver proyecto</span>
-            </figure>
-            <div class="project__meta">
+        <!-- Proyecto DESTACADO (foto real) -->
+        <article class="project project--feat reveal" data-name="Casa Marea" data-info="Cartagena · Residencial">
+          <figure class="media media--feat">
+            <picture>
+              <source type="image/webp" srcset="assets/img/interior-real-1224.webp" />
+              <img src="assets/img/interior-real-1224.jpg" alt="Casa Marea — Proyecto residencial diseñado por Elías Coneo" loading="lazy" width="1224" height="596" />
+            </picture>
+            <div class="project__overlay">
+              <span class="project__idx">Proyecto destacado</span>
               <h3 class="project__name">Casa Marea</h3>
               <p class="project__info"><span>Cartagena</span><span class="dot">·</span><span>Residencial</span></p>
+              <span class="project__view">Ampliar</span>
             </div>
-          </article>
+          </figure>
+        </article>
 
-          <!-- Proyecto 2 -->
-          <article class="project reveal">
+        <!-- Mosaico compacto (galería) -->
+        <div class="portafolio__mosaic">
+          <article class="project reveal" data-name="Apartamento Sereno" data-info="Bogotá · Residencial">
             <figure class="media media--portrait media--sand">
               <!-- SLOT · assets/img/proyectos/proyecto-02.jpg · vertical ~800×1000 -->
               <img src="assets/img/proyectos/proyecto-02.jpg" alt="Apartamento Sereno — Proyecto residencial en Bogotá" loading="lazy" width="800" height="1000" onerror="this.closest('.media').classList.add('is-empty');this.remove();" />
               <span class="media__plate" aria-hidden="true"></span>
-              <span class="project__view" aria-hidden="true">Ver proyecto</span>
+              <div class="project__overlay"><h3 class="project__name">Apartamento Sereno</h3><p class="project__info"><span>Bogotá</span><span class="dot">·</span><span>Residencial</span></p><span class="project__view">Ampliar</span></div>
             </figure>
-            <div class="project__meta">
-              <h3 class="project__name">Apartamento Sereno</h3>
-              <p class="project__info"><span>Bogotá</span><span class="dot">·</span><span>Residencial</span></p>
-            </div>
           </article>
 
-          <!-- Proyecto 3 -->
-          <article class="project reveal">
-            <figure class="media media--portrait media--blush">
-              <!-- SLOT · assets/img/proyectos/proyecto-03.jpg · vertical ~800×1000 -->
-              <img src="assets/img/proyectos/proyecto-03.jpg" alt="Café Lumière — Proyecto comercial en Medellín" loading="lazy" width="800" height="1000" onerror="this.closest('.media').classList.add('is-empty');this.remove();" />
+          <article class="project reveal" data-name="Café Lumière" data-info="Medellín · Comercial">
+            <figure class="media media--square media--blush">
+              <!-- SLOT · assets/img/proyectos/proyecto-03.jpg · cuadrada ~1000×1000 -->
+              <img src="assets/img/proyectos/proyecto-03.jpg" alt="Café Lumière — Proyecto comercial en Medellín" loading="lazy" width="1000" height="1000" onerror="this.closest('.media').classList.add('is-empty');this.remove();" />
               <span class="media__plate" aria-hidden="true"></span>
-              <span class="project__view" aria-hidden="true">Ver proyecto</span>
+              <div class="project__overlay"><h3 class="project__name">Café Lumière</h3><p class="project__info"><span>Medellín</span><span class="dot">·</span><span>Comercial</span></p><span class="project__view">Ampliar</span></div>
             </figure>
-            <div class="project__meta">
-              <h3 class="project__name">Café Lumière</h3>
-              <p class="project__info"><span>Medellín</span><span class="dot">·</span><span>Comercial</span></p>
-            </div>
           </article>
 
-          <!-- Proyecto 4 -->
-          <article class="project reveal">
-            <figure class="media media--portrait media--teal">
-              <!-- SLOT · assets/img/proyectos/proyecto-04.jpg · vertical ~800×1000 -->
-              <img src="assets/img/proyectos/proyecto-04.jpg" alt="Penthouse Horizonte — Proyecto residencial en Santa Marta" loading="lazy" width="800" height="1000" onerror="this.closest('.media').classList.add('is-empty');this.remove();" />
+          <article class="project reveal" data-name="Penthouse Horizonte" data-info="Santa Marta · Residencial">
+            <figure class="media media--landscape media--teal">
+              <!-- SLOT · assets/img/proyectos/proyecto-04.jpg · horizontal ~1200×800 -->
+              <img src="assets/img/proyectos/proyecto-04.jpg" alt="Penthouse Horizonte — Proyecto residencial en Santa Marta" loading="lazy" width="1200" height="800" onerror="this.closest('.media').classList.add('is-empty');this.remove();" />
               <span class="media__plate" aria-hidden="true"></span>
-              <span class="project__view" aria-hidden="true">Ver proyecto</span>
+              <div class="project__overlay"><h3 class="project__name">Penthouse Horizonte</h3><p class="project__info"><span>Santa Marta</span><span class="dot">·</span><span>Residencial</span></p><span class="project__view">Ampliar</span></div>
             </figure>
-            <div class="project__meta">
-              <h3 class="project__name">Penthouse Horizonte</h3>
-              <p class="project__info"><span>Santa Marta</span><span class="dot">·</span><span>Residencial</span></p>
-            </div>
           </article>
 
-          <!-- Proyecto 5 — ancho -->
-          <article class="project project--lg reveal">
-            <figure class="media media--landscape media--sand">
-              <!-- SLOT · assets/img/proyectos/proyecto-05.jpg · horizontal ~1200×585 -->
-              <img src="assets/img/proyectos/proyecto-05.jpg" alt="Estudio Atelier — Proyecto corporativo en Barranquilla" loading="lazy" width="1200" height="585" onerror="this.closest('.media').classList.add('is-empty');this.remove();" />
+          <article class="project reveal" data-name="Estudio Atelier" data-info="Barranquilla · Corporativo">
+            <figure class="media media--portrait media--cream">
+              <!-- SLOT · assets/img/proyectos/proyecto-05.jpg · vertical ~800×1000 -->
+              <img src="assets/img/proyectos/proyecto-05.jpg" alt="Estudio Atelier — Proyecto corporativo en Barranquilla" loading="lazy" width="800" height="1000" onerror="this.closest('.media').classList.add('is-empty');this.remove();" />
               <span class="media__plate" aria-hidden="true"></span>
-              <span class="project__view" aria-hidden="true">Ver proyecto</span>
+              <div class="project__overlay"><h3 class="project__name">Estudio Atelier</h3><p class="project__info"><span>Barranquilla</span><span class="dot">·</span><span>Corporativo</span></p><span class="project__view">Ampliar</span></div>
             </figure>
-            <div class="project__meta">
-              <h3 class="project__name">Estudio Atelier</h3>
-              <p class="project__info"><span>Barranquilla</span><span class="dot">·</span><span>Corporativo</span></p>
-            </div>
           </article>
 
-          <!-- Proyecto 6 -->
-          <article class="project reveal">
+          <article class="project reveal" data-name="Suite Después del Agua" data-info="Cartagena · Hospitalidad">
             <figure class="media media--portrait media--blush">
               <!-- SLOT · assets/img/proyectos/proyecto-06.jpg · vertical ~800×1000 -->
               <img src="assets/img/proyectos/proyecto-06.jpg" alt="Suite Después del Agua — Proyecto de hospitalidad en Cartagena" loading="lazy" width="800" height="1000" onerror="this.closest('.media').classList.add('is-empty');this.remove();" />
               <span class="media__plate" aria-hidden="true"></span>
-              <span class="project__view" aria-hidden="true">Ver proyecto</span>
+              <div class="project__overlay"><h3 class="project__name">Suite Después del Agua</h3><p class="project__info"><span>Cartagena</span><span class="dot">·</span><span>Hospitalidad</span></p><span class="project__view">Ampliar</span></div>
             </figure>
-            <div class="project__meta">
-              <h3 class="project__name">Suite Después del Agua</h3>
-              <p class="project__info"><span>Cartagena</span><span class="dot">·</span><span>Hospitalidad</span></p>
-            </div>
           </article>
+
+          <article class="project reveal" data-name="Loft Marfil" data-info="Medellín · Residencial">
+            <figure class="media media--square media--sand">
+              <!-- SLOT · assets/img/proyectos/proyecto-07.jpg · cuadrada ~1000×1000 -->
+              <img src="assets/img/proyectos/proyecto-07.jpg" alt="Loft Marfil — Proyecto residencial en Medellín" loading="lazy" width="1000" height="1000" onerror="this.closest('.media').classList.add('is-empty');this.remove();" />
+              <span class="media__plate" aria-hidden="true"></span>
+              <div class="project__overlay"><h3 class="project__name">Loft Marfil</h3><p class="project__info"><span>Medellín</span><span class="dot">·</span><span>Residencial</span></p><span class="project__view">Ampliar</span></div>
+            </figure>
+          </article>
+
+          <article class="project reveal" data-name="Terraza Origen" data-info="Cartagena · Comercial">
+            <figure class="media media--landscape media--blush">
+              <!-- SLOT · assets/img/proyectos/proyecto-08.jpg · horizontal ~1200×800 -->
+              <img src="assets/img/proyectos/proyecto-08.jpg" alt="Terraza Origen — Proyecto comercial en Cartagena" loading="lazy" width="1200" height="800" onerror="this.closest('.media').classList.add('is-empty');this.remove();" />
+              <span class="media__plate" aria-hidden="true"></span>
+              <div class="project__overlay"><h3 class="project__name">Terraza Origen</h3><p class="project__info"><span>Cartagena</span><span class="dot">·</span><span>Comercial</span></p><span class="project__view">Ampliar</span></div>
+            </figure>
+          </article>
+
+          <article class="project reveal" data-name="Casa Travertino" data-info="Barranquilla · Residencial">
+            <figure class="media media--portrait media--sand">
+              <!-- SLOT · assets/img/proyectos/proyecto-09.jpg · vertical ~800×1000 -->
+              <img src="assets/img/proyectos/proyecto-09.jpg" alt="Casa Travertino — Proyecto residencial en Barranquilla" loading="lazy" width="800" height="1000" onerror="this.closest('.media').classList.add('is-empty');this.remove();" />
+              <span class="media__plate" aria-hidden="true"></span>
+              <div class="project__overlay"><h3 class="project__name">Casa Travertino</h3><p class="project__info"><span>Barranquilla</span><span class="dot">·</span><span>Residencial</span></p><span class="project__view">Ampliar</span></div>
+            </figure>
+          </article>
+        </div>
+
+        <div class="portafolio__more reveal">
+          <button class="btn btn--ghost" id="galleryOpen" data-magnetic>Ver galería completa</button>
         </div>
       </div>
     </section>
@@ -611,6 +619,21 @@
   <a href="#" data-wa class="wa-float" aria-label="Escríbenos por WhatsApp">
     <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21l1.7-5A8 8 0 1 1 8 19.3z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1.2-.4 1.2-1s-.9-1-1.4-1.2c-.4-.1-.7 0-1 .3-.8-.4-1.5-1.1-1.9-1.9.3-.3.4-.6.3-1-.2-.5-.6-1.4-1.2-1.4S9 8.9 9 9.5z" fill="currentColor" stroke="none"/></svg>
   </a>
+
+  <!-- ============================ LIGHTBOX GALERÍA ============================ -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Galería de proyectos">
+    <button class="lightbox__close" id="lbClose" aria-label="Cerrar galería">&times;</button>
+    <button class="lightbox__nav lightbox__prev" id="lbPrev" aria-label="Proyecto anterior">&#8249;</button>
+    <button class="lightbox__nav lightbox__next" id="lbNext" aria-label="Proyecto siguiente">&#8250;</button>
+    <figure class="lightbox__stage">
+      <div class="lightbox__imgwrap" id="lbImgWrap"></div>
+      <figcaption class="lightbox__cap">
+        <span class="lightbox__name" id="lbName"></span>
+        <span class="lightbox__info" id="lbInfo"></span>
+        <span class="lightbox__count" id="lbCount"></span>
+      </figcaption>
+    </figure>
+  </div>
 
   <script src="js/main.js"></script>
 </body>

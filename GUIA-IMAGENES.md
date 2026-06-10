@@ -37,16 +37,19 @@ Ya usa la **foto real** extraída del PDF de marca. Si tienes una toma en mayor 
 | `filosofia.jpg` | `assets/img/` | vertical 4:5 | 1000×1250 |
 
 ## 4) PORTAFOLIO (Proyectos)
-El **Proyecto 1 (Casa Marea)** ya usa la foto real. Sube los demás:
+Es una **galería mosaico (masonry) + lightbox**. El **Proyecto destacado (Casa Marea)** ya usa la foto real (va arriba, grande). Sube los del mosaico:
 | Archivo | Carpeta | Proporción | Tamaño sugerido | Proyecto |
 |---|---|---|---|---|
 | `proyecto-02.jpg` | `assets/img/proyectos/` | vertical 4:5 | 800×1000 | Apartamento Sereno · Bogotá |
-| `proyecto-03.jpg` | `assets/img/proyectos/` | vertical 4:5 | 800×1000 | Café Lumière · Medellín |
-| `proyecto-04.jpg` | `assets/img/proyectos/` | vertical 4:5 | 800×1000 | Penthouse Horizonte · Santa Marta |
-| `proyecto-05.jpg` | `assets/img/proyectos/` | horizontal 16:9 | 1200×675 | Estudio Atelier · Barranquilla |
+| `proyecto-03.jpg` | `assets/img/proyectos/` | cuadrada 1:1 | 1000×1000 | Café Lumière · Medellín |
+| `proyecto-04.jpg` | `assets/img/proyectos/` | horizontal 16:9 | 1200×675 | Penthouse Horizonte · Santa Marta |
+| `proyecto-05.jpg` | `assets/img/proyectos/` | vertical 4:5 | 800×1000 | Estudio Atelier · Barranquilla |
 | `proyecto-06.jpg` | `assets/img/proyectos/` | vertical 4:5 | 800×1000 | Suite Después del Agua · Cartagena |
+| `proyecto-07.jpg` | `assets/img/proyectos/` | cuadrada 1:1 | 1000×1000 | Loft Marfil · Medellín |
+| `proyecto-08.jpg` | `assets/img/proyectos/` | horizontal 16:9 | 1200×675 | Terraza Origen · Cartagena |
+| `proyecto-09.jpg` | `assets/img/proyectos/` | vertical 4:5 | 800×1000 | Casa Travertino · Barranquilla |
 
-> Los nombres de proyecto, ciudad y tipo son **editables** en `index.html` (sección Portafolio).
+> La proporción es flexible — el mosaico se adapta. Los nombres/ciudad/tipo son **editables** en `index.html` (sección Portafolio). Al hacer clic en cualquier imagen (o en "Ver galería completa") se abre el **lightbox** para verlas grandes y navegar.
 
 ## 5) SOBRE ELÍAS (retrato profesional)
 | Archivo | Carpeta | Proporción | Tamaño sugerido |
