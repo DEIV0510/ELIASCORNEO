@@ -593,8 +593,17 @@ body.has-cursor input,body.has-cursor textarea,body.has-cursor select{cursor:aut
 /* ============================ EN MOVIMIENTO · VIDEOS ============================ */
 .reel{padding:var(--sp-section) 0;background:var(--cream-2);border-top:1px solid var(--line)}
 .reel__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,30px);max-width:900px;margin-inline:auto}
-.reel__item{position:relative;aspect-ratio:3/4;border-radius:8px;overflow:hidden;box-shadow:var(--shadow-soft);background:var(--sand);cursor:default}
+.reel__item{position:relative;aspect-ratio:3/4;border-radius:8px;overflow:hidden;box-shadow:var(--shadow-soft);background:var(--sand);cursor:pointer}
 .reel__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* Botón Play/Pausa central — afordancia clara para iniciar el video si el autoplay está bloqueado */
+.reel__play{position:absolute;inset:0;margin:auto;width:64px;height:64px;border-radius:50%;z-index:3;display:grid;place-items:center;color:var(--cream);background:rgba(42,33,22,.5);border:1px solid rgba(244,238,229,.4);backdrop-filter:blur(4px);cursor:pointer;transition:opacity .3s var(--ease),transform .3s var(--ease),background .3s}
+.reel__play svg{margin-left:3px}
+.reel__play .ic-pause{display:none}
+.reel__play:hover{transform:scale(1.07);background:rgba(42,33,22,.74)}
+.reel__item.is-playing .reel__play{opacity:0}
+.reel__item.is-playing:hover .reel__play,.reel__item.is-playing .reel__play:focus-visible{opacity:1}
+.reel__item.is-playing .reel__play .ic-play{display:none}
+.reel__item.is-playing .reel__play .ic-pause{display:block;margin-left:0}
 .reel__cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:clamp(14px,1.6vw,22px);display:flex;flex-direction:column;gap:.25em;background:linear-gradient(to top,rgba(42,33,22,.82),rgba(42,33,22,.15) 55%,transparent)}
 .reel__name{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(1rem,1.5vw,1.3rem);color:var(--cream);line-height:1;letter-spacing:.01em}
 .reel__loc{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,238,229,.82)}

@@ -385,18 +385,43 @@
 
   /* ============================ EN MOVIMIENTO · VIDEOS ============================ */
   (function reel() {
-    var vids = $$('.reel__video');
-    if (!vids.length) return;
-
-    // Respeta "reducir movimiento": sin autoplay, controles nativos para reproducir a voluntad.
-    if (reduceMotion) {
-      vids.forEach(function (v) { v.setAttribute('controls', ''); v.removeAttribute('loop'); });
-      $$('.reel__sound').forEach(function (b) { b.style.display = 'none'; });
-      return;
-    }
+    var items = $$('.reel__item');
+    if (!items.length) return;
 
     function play(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
 
+    items.forEach(function (item) {
+      var v = item.querySelector('.reel__video');
+      if (!v) return;
+
+      // Reflejar el estado REAL del video (sea por autoplay, clic o el observer).
+      v.addEventListener('play', function () { item.classList.add('is-playing'); });
+      v.addEventListener('pause', function () { item.classList.remove('is-playing'); });
+
+      // Tocar el video (o el botón central) = reproducir / pausar. Esto garantiza que
+      // SIEMPRE se pueda iniciar aunque el navegador bloquee el autoplay (móvil, ahorro de batería).
+      item.addEventListener('click', function (e) {
+        if (e.target.closest('.reel__sound')) return; // el botón de sonido tiene su propia acción
+        if (v.paused) play(v); else v.pause();
+      });
+
+      // Botón de sonido (los clips arrancan en mute por requisito de autoplay).
+      var snd = item.querySelector('.reel__sound');
+      if (snd) {
+        snd.addEventListener('click', function (e) {
+          e.stopPropagation();
+          v.muted = !v.muted;
+          snd.classList.toggle('is-on', !v.muted);
+          snd.setAttribute('aria-label', v.muted ? 'Activar sonido' : 'Silenciar');
+          if (!v.muted) play(v); // si activan sonido, asegúrate de que esté reproduciendo
+        });
+      }
+    });
+
+    // Si el usuario pidió "reducir movimiento": nada de autoplay, pero los botones de play siguen activos.
+    if (reduceMotion) return;
+
+    var vids = $$('.reel__video');
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
@@ -408,18 +433,6 @@
     } else {
       vids.forEach(play);
     }
-
-    // Activar / silenciar sonido por clip (arrancan en mute por requisito de autoplay).
-    $$('.reel__sound').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var v = btn.closest('.reel__item').querySelector('video');
-        if (!v) return;
-        v.muted = !v.muted;
-        btn.classList.toggle('is-on', !v.muted);
-        btn.setAttribute('aria-label', v.muted ? 'Activar sonido' : 'Silenciar');
-        if (!v.muted) play(v);
-      });
-    });
   })();
 
 })();
