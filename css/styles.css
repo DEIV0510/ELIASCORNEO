@@ -646,3 +646,41 @@ body.has-cursor input,body.has-cursor textarea,body.has-cursor select{cursor:aut
   .hero__media img{animation:none;transform:scale(1.05)}
   .loader__logo{clip-path:none}
 }
+
+/* ============================ OPTIMIZACIÓN CROSS-DEVICE ============================ */
+/* Respuesta táctil sin delay ni flash gris */
+a,button,.btn,.project,.nav-toggle,input,select,textarea,label{-webkit-tap-highlight-color:rgba(0,0,0,0);touch-action:manipulation}
+
+/* Áreas seguras (notch / Dynamic Island / barra de gestos) */
+@supports (padding:max(0px)){
+  .header__inner{padding-left:max(var(--gut),env(safe-area-inset-left));padding-right:max(var(--gut),env(safe-area-inset-right))}
+  .mobile-menu{padding-left:max(var(--gut),env(safe-area-inset-left));padding-right:max(var(--gut),env(safe-area-inset-right))}
+  .wa-float{right:max(22px,env(safe-area-inset-right));bottom:max(22px,env(safe-area-inset-bottom))}
+  .lightbox__close{top:max(clamp(14px,3vw,28px),env(safe-area-inset-top))}
+}
+
+/* Monitores muy anchos: aprovechar el espacio */
+@media (min-width:1800px){:root{--container:1440px}}
+@media (min-width:2400px){:root{--container:1640px}}
+
+/* Dispositivos táctiles: objetos de toque cómodos (≥44px) */
+@media (hover:none){
+  .footer__col a,.footer__static{padding-block:5px}
+  .nav__link{padding:9px 0}
+  .footer__socials a{width:46px;height:46px}
+}
+
+/* Celular muy pequeño (≤360px) */
+@media (max-width:360px){
+  :root{--gut:18px}
+  .hero__actions .btn{font-size:.78rem;padding:1em 1.4em}
+}
+
+/* Celular en horizontal (altura corta): hero compacto y menú con scroll */
+@media (orientation:landscape) and (max-height:520px){
+  .hero{min-height:auto;padding-top:86px;padding-bottom:52px}
+  .hero__stage{max-width:340px;margin-inline:auto}
+  .mobile-menu{justify-content:flex-start;padding-top:78px;gap:22px;overflow-y:auto}
+  .mobile-menu__nav{gap:2px}
+  .mobile-menu__link{font-size:clamp(1.3rem,5.5vw,1.9rem)}
+}
