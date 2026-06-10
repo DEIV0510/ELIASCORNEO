@@ -221,12 +221,7 @@ body::after{
   clip-path:inset(0 0 100% 0);animation:rise 1.5s var(--ease) .3s forwards
 }
 @keyframes rise{to{clip-path:inset(0 0 0% 0)}}
-.loader__shimmer{
-  position:absolute;top:0;left:-60%;width:50%;height:100%;
-  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
-  transform:skewX(-18deg);animation:shimmer 1.8s var(--ease) 1s
-}
-@keyframes shimmer{0%{left:-60%}100%{left:130%}}
+/* (destello "shimmer" eliminado — generaba un brillo blanco cuadrado) */
 .loader__caption{
   font-family:var(--font-body);font-style:italic;font-weight:400;font-size:clamp(.95rem,2.2vw,1.35rem);
   color:var(--gold);letter-spacing:.08em;margin-top:18px;opacity:0;
@@ -277,7 +272,7 @@ body::after{
 .hero__tilt{position:relative;transform-style:preserve-3d;transition:transform .5s var(--ease-soft);will-change:transform}
 .hero__float{position:relative;transform-style:preserve-3d;animation:heroFloat 6s ease-in-out infinite}
 @keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
-.hero__render{position:relative;transform:translateZ(34px);filter:drop-shadow(0 32px 40px rgba(70,56,39,.34))}
+.hero__render{position:relative;transform:translateZ(34px);border-radius:14px;overflow:hidden;box-shadow:0 44px 72px -26px rgba(46,36,24,.5),0 0 0 1px rgba(46,36,24,.07)}
 .hero__render img{width:100%;height:auto;display:block}
 .hero__render-shadow{position:absolute;left:50%;bottom:3%;width:60%;height:30px;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(70,56,39,.3),transparent 70%);filter:blur(16px);z-index:-1;animation:heroShadow 6s ease-in-out infinite}
 @keyframes heroShadow{0%,100%{opacity:.5;width:60%}50%{opacity:.3;width:50%}}
