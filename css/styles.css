@@ -546,6 +546,31 @@ body::after{
 .wa-float.is-visible{transform:translateY(0)}
 .wa-float:hover{background:var(--teal)}
 
+/* Música de fondo · botón flotante (abajo-izquierda, opuesto a WhatsApp) */
+.music-btn{
+  position:fixed;left:22px;bottom:22px;z-index:900;width:52px;height:52px;border-radius:50%;
+  background:var(--ink);color:var(--cream);display:grid;place-items:center;cursor:pointer;
+  border:1px solid rgba(244,238,229,.16);box-shadow:0 16px 36px -14px rgba(42,33,22,.7);
+  transform:translateY(120px);transition:transform .5s var(--ease),background .4s
+}
+.music-btn.is-visible{transform:translateY(0)}
+.music-btn:hover{background:var(--teal)}
+.music-btn:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
+.music-btn__note{display:block}
+.music-btn.is-playing .music-btn__note{display:none}
+.music-btn__bars{display:none;align-items:flex-end;gap:3px;height:18px}
+.music-btn.is-playing .music-btn__bars{display:flex}
+.music-btn__bars i{width:3px;height:6px;background:currentColor;border-radius:2px}
+.music-btn.is-playing .music-btn__bars i{animation:eq .9s ease-in-out infinite}
+.music-btn.is-playing .music-btn__bars i:nth-child(2){animation-delay:.18s}
+.music-btn.is-playing .music-btn__bars i:nth-child(3){animation-delay:.36s}
+.music-btn.is-playing .music-btn__bars i:nth-child(4){animation-delay:.54s}
+@keyframes eq{0%,100%{height:5px}50%{height:17px}}
+@media (prefers-reduced-motion:reduce){.music-btn.is-playing .music-btn__bars i{animation:none;height:11px}}
+/* iframe de YouTube oculto — debe seguir renderizado para que el audio no se pause */
+.bg-player{position:fixed;left:0;bottom:0;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden;z-index:-1}
+.bg-player iframe{width:1px;height:1px;border:0}
+
 /* ============================ REVEAL ============================ */
 .js .reveal{opacity:0;transform:translateY(28px);transition:opacity .95s var(--ease),transform .95s var(--ease)}
 .reveal.is-visible{opacity:1;transform:none}
@@ -681,6 +706,7 @@ a,button,.btn,.project,.nav-toggle,input,select,textarea,label{-webkit-tap-highl
   .header__inner{padding-left:max(var(--gut),env(safe-area-inset-left));padding-right:max(var(--gut),env(safe-area-inset-right))}
   .mobile-menu{padding-left:max(var(--gut),env(safe-area-inset-left));padding-right:max(var(--gut),env(safe-area-inset-right))}
   .wa-float{right:max(22px,env(safe-area-inset-right));bottom:max(22px,env(safe-area-inset-bottom))}
+  .music-btn{left:max(22px,env(safe-area-inset-left));bottom:max(22px,env(safe-area-inset-bottom))}
   .lightbox__close{top:max(clamp(14px,3vw,28px),env(safe-area-inset-top))}
 }
 

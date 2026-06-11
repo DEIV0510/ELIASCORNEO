@@ -435,4 +435,116 @@
     }
   })();
 
+  /* ============================ MÚSICA DE FONDO (YouTube IFrame API) ============================ */
+  (function bgMusic() {
+    var btn = $('#musicToggle');
+    var holder = $('#bgPlayer');
+    if (!btn || !holder) return;
+
+    var VIDEO_ID = 'fQUzYyLSJBI';
+    var VOLUME = 22;
+    var KEY = 'eliasMusic';                       // 'on' | 'off' (por defecto ON)
+    var player = null, ready = false, interacted = false, audible = false;
+
+    function wantMusic() { try { return localStorage.getItem(KEY) !== 'off'; } catch (e) { return true; } }
+    function setPref(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+
+    // ¿Algún video del reel sonando? (la música le cede el paso)
+    function reelAudible() {
+      return $$('.reel__video').some(function (v) { return !v.muted && !v.paused; });
+    }
+    function muteReels() {
+      $$('.reel__item').forEach(function (it) {
+        var v = it.querySelector('.reel__video'); if (v) v.muted = true;
+        var s = it.querySelector('.reel__sound');
+        if (s) { s.classList.remove('is-on'); s.setAttribute('aria-label', 'Activar sonido'); }
+      });
+    }
+
+    function reflect() {
+      var on = wantMusic();                          // el botón refleja la preferencia (encendida por defecto)
+      btn.classList.toggle('is-playing', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute('aria-label', on ? 'Silenciar música de fondo' : 'Activar música de fondo');
+    }
+
+    function apply() {
+      if (ready) {
+        if (wantMusic() && interacted && !reelAudible()) {
+          try { player.unMute(); player.setVolume(VOLUME); player.playVideo(); } catch (e) {}
+          audible = true;
+        } else {
+          try { player.mute(); if (!wantMusic()) player.pauseVideo(); } catch (e) {}
+          audible = false;
+        }
+      }
+      reflect();
+    }
+
+    function init() {
+      player = new YT.Player(holder, {
+        videoId: VIDEO_ID,
+        playerVars: {
+          autoplay: 1, controls: 0, loop: 1, playlist: VIDEO_ID, modestbranding: 1,
+          playsinline: 1, rel: 0, fs: 0, disablekb: 1, iv_load_policy: 3,
+          origin: window.location.origin
+        },
+        events: {
+          onReady: function () {
+            ready = true;
+            try { player.setVolume(VOLUME); player.mute(); player.playVideo(); } catch (e) {} // pre-carga muteada
+            apply();
+          },
+          onStateChange: function (e) {
+            // refuerzo del loop por si el playlist no reinicia
+            if (e.data === YT.PlayerState.ENDED) { try { player.seekTo(0); player.playVideo(); } catch (_) {} }
+          }
+        }
+      });
+    }
+
+    // Cargar la API de YouTube una sola vez
+    if (window.YT && window.YT.Player) {
+      init();
+    } else {
+      var prev = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = function () { if (typeof prev === 'function') prev(); init(); };
+      if (!document.getElementById('yt-iframe-api')) {
+        var s = document.createElement('script');
+        s.id = 'yt-iframe-api';
+        s.src = 'https://www.youtube.com/iframe_api';
+        document.head.appendChild(s);
+      }
+    }
+
+    // El audio con sonido necesita un gesto del usuario: al primer toque (en cualquier parte), suena.
+    function onFirstGesture(e) {
+      if (interacted) return;
+      // Si el gesto cae sobre el propio botón de música, deja que su handler decida
+      // (evita el caso "enciende y apaga" en el mismo clic).
+      if (e && e.target && e.target.closest && e.target.closest('#musicToggle')) { interacted = true; return; }
+      interacted = true;
+      apply();
+    }
+    ['pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
+      window.addEventListener(ev, onFirstGesture, { passive: true });
+    });
+
+    // Botón: alterna la preferencia (encendido por defecto → primer clic la apaga)
+    btn.addEventListener('click', function () {
+      interacted = true;
+      if (wantMusic()) { setPref('off'); }              // estaba encendida → apagar
+      else { setPref('on'); muteReels(); }              // encender (y callar los videos)
+      apply();
+    });
+
+    // Coordinar con los videos del reel: si suenan, la música se silencia; al callarse, vuelve.
+    $$('.reel__video').forEach(function (v) {
+      ['play', 'pause', 'volumechange'].forEach(function (ev) { v.addEventListener(ev, apply); });
+    });
+
+    // Aparición del botón (igual que el de WhatsApp)
+    window.setTimeout(function () { btn.classList.add('is-visible'); }, 1200);
+  })();
+
 })();
