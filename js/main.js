@@ -444,7 +444,7 @@
     var VIDEO_ID = 'fQUzYyLSJBI';
     var VOLUME = 22;
     var KEY = 'eliasMusic';                       // 'on' | 'off' (por defecto ON)
-    var player = null, ready = false, interacted = false, audible = false;
+    var player = null, ready = false, interacted = false;
 
     function wantMusic() { try { return localStorage.getItem(KEY) !== 'off'; } catch (e) { return true; } }
     function setPref(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
@@ -470,12 +470,18 @@
 
     function apply() {
       if (ready) {
-        if (wantMusic() && interacted && !reelAudible()) {
-          try { player.unMute(); player.setVolume(VOLUME); player.playVideo(); } catch (e) {}
-          audible = true;
+        if (!wantMusic()) {
+          try { player.pauseVideo(); } catch (e) {}
+        } else if (reelAudible()) {
+          try { player.mute(); player.playVideo(); } catch (e) {}   // sigue cargada, pero en mudo
         } else {
-          try { player.mute(); if (!wantMusic()) player.pauseVideo(); } catch (e) {}
-          audible = false;
+          // Queremos música y nada compite: reproducir. Con sonido si ya hubo interacción
+          // (o si el navegador lo permite sin gesto por engagement previo).
+          try {
+            if (interacted) player.unMute();
+            player.setVolume(VOLUME);
+            player.playVideo();
+          } catch (e) {}
         }
       }
       reflect();
@@ -492,8 +498,21 @@
         events: {
           onReady: function () {
             ready = true;
-            try { player.setVolume(VOLUME); player.mute(); player.playVideo(); } catch (e) {} // pre-carga muteada
-            apply();
+            try { player.setVolume(VOLUME); } catch (e) {}
+            if (wantMusic()) {
+              // 1) Intento de sonido INMEDIATO al cargar (funciona si el navegador lo permite por
+              //    engagement/allowlist; en tu propio equipo, que lo visitas seguido, suele permitirlo).
+              try { player.unMute(); player.playVideo(); } catch (e) {}
+              // 2) Red de seguridad: si el navegador bloqueó el audio, arranca en MUDO (garantizado);
+              //    el sonido entrará al primer micro-gesto (mover el mouse, scroll o tocar la pantalla).
+              window.setTimeout(function () {
+                try { if (player.getPlayerState() !== 1) { player.mute(); player.playVideo(); } } catch (e) {}
+                reflect();
+              }, 1100);
+            } else {
+              try { player.pauseVideo(); } catch (e) {}
+            }
+            reflect();
           },
           onStateChange: function (e) {
             // refuerzo del loop por si el playlist no reinicia
@@ -517,16 +536,21 @@
       }
     }
 
-    // El audio con sonido necesita un gesto del usuario: al primer toque (en cualquier parte), suena.
+    // El sonido necesita un gesto del usuario. Para que se sienta automático, escuchamos el abanico
+    // más amplio de micro-gestos (mover el mouse, scroll, rueda, tocar, teclas, clic): el PRIMERO
+    // que ocurra activa el audio — suele pasar en el primer segundo.
+    var GESTURES = ['pointerdown', 'mousedown', 'mousemove', 'keydown', 'touchstart', 'touchmove', 'scroll', 'wheel', 'click'];
+    function detachGestures() { GESTURES.forEach(function (ev) { window.removeEventListener(ev, onFirstGesture); }); }
     function onFirstGesture(e) {
-      if (interacted) return;
-      // Si el gesto cae sobre el propio botón de música, deja que su handler decida
-      // (evita el caso "enciende y apaga" en el mismo clic).
-      if (e && e.target && e.target.closest && e.target.closest('#musicToggle')) { interacted = true; return; }
+      if (interacted) { detachGestures(); return; }
+      var onBtn = e && e.target && e.target.closest && e.target.closest('#musicToggle');
+      var pressing = e && /^(pointerdown|mousedown|touchstart|click)$/.test(e.type);
       interacted = true;
+      detachGestures();
+      if (onBtn && pressing) return;   // un clic/toque sobre el propio botón lo maneja su handler
       apply();
     }
-    ['pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
+    GESTURES.forEach(function (ev) {
       window.addEventListener(ev, onFirstGesture, { passive: true });
     });
 
