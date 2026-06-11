@@ -31,7 +31,7 @@
 
   --container:1280px;
   --gut:clamp(20px,5vw,64px);
-  --sp-section:clamp(80px,11vw,168px);
+  --sp-section:clamp(52px,11vw,168px);
 
   --ease:cubic-bezier(.22,.61,.36,1);
   --ease-soft:cubic-bezier(.4,0,.2,1);
@@ -107,7 +107,7 @@ body::after{
 .eyebrow--gold{color:var(--sienna)}
 .eyebrow--gold-light{color:var(--gold)}
 
-.section-head{max-width:680px;margin-bottom:clamp(40px,5vw,72px)}
+.section-head{max-width:680px;margin-bottom:clamp(24px,5vw,72px)}
 .section-head--center{margin-inline:auto;text-align:center}
 .section-head__sub{margin-top:1.2rem;color:var(--taupe);font-size:1.05rem;max-width:46ch}
 .section-head--center .section-head__sub{margin-inline:auto}
@@ -673,7 +673,7 @@ body.has-cursor input,body.has-cursor textarea,body.has-cursor select{cursor:aut
   .hero__side{display:none}
 }
 @media (max-width:520px){
-  .hero{padding:120px 22px 110px}
+  .hero{padding:104px 22px 56px;min-height:auto}
   .hero__actions{flex-direction:column;align-items:stretch}
   .hero__actions .btn{width:100%}
   .form__row{grid-template-columns:1fr}
